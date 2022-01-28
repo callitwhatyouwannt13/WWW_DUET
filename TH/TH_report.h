@@ -12,7 +12,6 @@
 #include <unordered_map>
 #include <time.h>
 #include "BOBHash32.h"
-#include "SS_DUET.h"
 #include "CUH_DUET.h"
 
 using namespace std;
@@ -23,8 +22,6 @@ unordered_map<string, int>ground_truth_xy;
 
 uint32_t insert_x[MAX_INSERT_PACKAGE];
 uint32_t insert_y[MAX_INSERT_PACKAGE];
-string insert_strx[MAX_INSERT_PACKAGE];
-string insert_strxy[MAX_INSERT_PACKAGE];
 
 struct node {uint32_t x;int count;} n[10000005];
 int cmp(node i,node j) {return i.count > j.count;}
@@ -123,37 +120,5 @@ void report_CUHDUET(int d, int w, int l, int r, int Nth, double Rth, int K, int 
     <<", "<<ARE<<", "<<AAE<<"], "<<endl;
 }
 
-void report_SSDUET(int M1, int d, int w, int l, int r, int Nth, double Rth, int K, int packetnum,  unordered_map <string, int> true_TH, set <string> th){
-    for(int i = 0; i< MAX_INSERT_PACKAGE; i++){
-        insert_strx[i] = to_string(insert_x[i]); insert_strxy[i] = to_string(insert_x[i]) + "|" + to_string(insert_y[i]);
-    }
-
-    clock_t start = clock();
-    SS_DUET *fh;
-    fh = new SS_DUET(M1+K, d, w, l, r, Nth, Rth, K); fh -> clear();
-    for(int i = 0; i < packetnum; i++){
-        fh -> insert(insert_x[i], insert_y[i], insert_strx[i]);
-    }
-    clock_t end = clock();
-    fh -> query_hottable();
-    unordered_map<string, int> fh_TH; fh_TH = fh->get_est_TH();
-
-    set <string> fhTH;
-    for(auto it = fh_TH.begin(); it != fh_TH.end(); it++){
-        fhTH.insert(it -> first);
-    }
-    set <string> fh_t; 
-    set_intersection(th.begin(), th.end(), fhTH.begin(), fhTH.end(),inserter( fh_t , fh_t.begin() ));
-    double recall = double(fh_t.size()) / double(true_TH.size()); double precision = double(fh_t.size()) / double(fh_TH.size());
-    double ARE = 0; double AAE = 0;
-    for (auto it = fh_TH.begin(); it != fh_TH.end(); it++){
-        string xy = it -> first; int freq = ground_truth_xy[xy];
-        ARE += double(abs(it  -> second - freq)) / freq; AAE += double(abs(it -> second - freq));
-    }
-    ARE /= fh_TH.size(); AAE /= fh_TH.size();
-    cout<<fixed<< setprecision(2)<<"["<<double(packetnum) / ((double)(end - start)/ CLOCKS_PER_SEC) / 1000000
-    <<", "<<precision<<", "<<recall<<", "<<2*recall*precision/(recall+precision)
-    <<", "<<ARE<<", "<<AAE<<"], "<<endl;
-}
 
 

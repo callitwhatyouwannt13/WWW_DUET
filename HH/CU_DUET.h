@@ -88,6 +88,10 @@ class CU_DUET{
             }
         }
 
+        /*
+        CU sketch for recording item x here.
+        Options: replace this part with CM sketch or some other sketch to record items. 
+        */
         void insert_scusketch(uint32_t x, uint32_t y){
             int pos[d];
             int min_x = INT_MAX;

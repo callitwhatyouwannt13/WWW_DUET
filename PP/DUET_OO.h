@@ -1,7 +1,7 @@
 #ifndef _DUET_OO_H
 #define _DUET_OO_H
 
-/*Our algorithm Flag_DUET*/
+/*Our algorithm FLAG_DUET*/
 
 #include <cmath>
 #include <cstdio>

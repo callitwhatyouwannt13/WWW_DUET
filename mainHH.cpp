@@ -46,14 +46,6 @@ int main(){
     int end_mem = 500000; //
     int step_mem = 50000;
 
-    j = 0;
-    cout<< "SS_DUET = [" <<endl;
-    for(int i = start_mem; i <= end_mem; i += step_mem){
-        wj[j] = (i - (lj[j]* rj[j] * 12)) / d / 14; 
-        report_SSDUET(d * wj[j] * 4 * 8 / (40 * 8), d, wj[j], lj[j], rj[j], Xth, Rth, Nth, packetnum, true_H2, tH2);
-        j++;
-    }
-    cout<<" ]"<<endl;
 
     j = 0;
     cout<< "CU_DUET = [" <<endl;
@@ -65,14 +57,6 @@ int main(){
         j++;
     }
     cout<<" ]"<<endl;
-
-    cout<< "CM_DUET = [" <<endl;
-    j = 0;
-    for(int i = start_mem; i <= end_mem; i += step_mem){
-        wj[j] = (i - (lj[j] * rj[j] * 12)) / d / 14;
-        report_CMDUET(d, wj[j], lj[j], rj[j], Xth, Rth, Nth, packetnum, true_H2, tH2);
-        j++;
-    }
-    cout<<" ]"<<endl;
+    
     return 0;
 }

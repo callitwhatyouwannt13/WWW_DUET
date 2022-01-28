@@ -38,16 +38,6 @@ int main(){
     int end_mem = 500000; //
     int step_mem = 50000;
     
-    
-    cout<< "SS_DUET = [" <<endl;
-    j = 0;
-    for(int i = start_mem; i <= end_mem; i += step_mem){
-        wj[j] = (i - (lj[j] * rj[j] * 12)- K * 12) / d / 14;
-        report_SSDUET(d * wj[j] * 4 * 8 / (40 * 8), d, wj[j], lj[j], rj[j], Nth, Rth, K, packetnum, true_TH, th);
-
-        j++;
-    }
-    cout<<"]"<<endl;
 
     cout<< "CUH_DUET = [" <<endl;
     j = 0;
