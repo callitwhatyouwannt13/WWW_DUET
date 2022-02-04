@@ -9,7 +9,7 @@ The data sets used in the paper can be found in [CAIDA1](https://www.caida.org/d
 We provide CAIDA1 (/data/125910.rar) in this repsitory. You can unzip and use it to run examples. 
 
 # How to run:
-    Build
+    mkdir build
     cd build
     cmake ..
     make
