@@ -1,6 +1,6 @@
 # DUET
 
-This folder contains source codes for the paper DUET: A Generic Framework for Finding Specific Secondary Elements in Data Streams.
+This folder contains source codes for the paper DUET: A Generic Framework for Finding Special Quadratic Elements in Data Streams.
 
 You can find the source codes of DUET used for each application in path '/HH', '/TH', and '/PP'. 
 
