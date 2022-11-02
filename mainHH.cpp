@@ -25,10 +25,10 @@ int main(){
     // cout << "d = "<< d << ", w = "<< w << ", l = "<< l << ", r = " << r << endl;
     // cout << "Xth = "<< Xth << " Rth = "<< Rth << endl;
     
-    // for CAIDA
+    // Example for CAIDA
     d = 4;
     l = 200;
-    Xth = 4000;
+    Xth = 4000; //ph_1*N = 0.0004*10000000 here
     Nth = 1000;
     Rth = 0.1;
     int lj[11] = {200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200};
