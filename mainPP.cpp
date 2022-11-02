@@ -22,11 +22,12 @@ int main(){
     int d, w, l ,r;
     int Xth, Nth;
     double Rth;
-
+    
+    // Example for CAIDA
     d = 4;
     l = 200;
     r = 12;
-    Xth = 1000;
+    Xth = 1000; //ph_1*period_num = 0.1*10000 here
     Nth = 500;
     Rth = 0.25;
     int wj[1000];
